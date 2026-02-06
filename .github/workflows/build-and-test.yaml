@@ -1,0 +1,30 @@
+name: build-and-test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    strategy:
+      fail-fast: false
+      matrix:
+        rosdistro: [humble, jazzy]
+        include:
+          - rosdistro: humble
+            container: ghcr.io/autowarefoundation/autoware:core-common-devel
+
+          - rosdistro: jazzy
+            container: ghcr.io/autowarefoundation/autoware:core-common-devel-jazzy-amd64
+
+    uses: ./.github/workflows/build-and-test-reusable.yaml
+
+    with:
+      rosdistro: ${{ matrix.rosdistro }}
+      container: ${{ matrix.container }}
+      pull-ccache: ${{ github.event_name != 'push' || github.ref != 'refs/heads/main' }}
+      push-ccache: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      cache-key-element: build
+      concurrency-group: build-and-test-${{ matrix.rosdistro }}-${{ github.event_name == 'push' && 'main' || github.ref }}
