@@ -1,0 +1,5 @@
+repositories:
+  core/autoware_core:
+    type: git
+    url: https://github.com/autowarefoundation/autoware_core.git
+    version: 1.6.0
