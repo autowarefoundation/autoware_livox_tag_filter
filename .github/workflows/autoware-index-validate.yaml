@@ -21,7 +21,7 @@ jobs:
       matrix:
         include:
           - ros_distro: jazzy
-            autoware_version: "1.8.0"
+            autoware_version: 1.8.0
     uses: autowarefoundation/autoware-index-github-actions/.github/workflows/validate-package.yaml@main
     with:
       ros_distro: ${{ matrix.ros_distro }}
