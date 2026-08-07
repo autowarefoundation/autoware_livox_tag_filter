@@ -2,6 +2,13 @@
 Changelog for package autoware_livox_tag_filter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.0 (2026-08-07)
+------------------
+* First release from the standalone repository. The package moved out of ``autoware_universe`` and is registered in the Autoware Index.
+* refactor(sensing): move node design files into each package (`#13105 <https://github.com/autowarefoundation/autoware_universe/issues/13105>`_)
+* docs: describe the package in package.xml
+* Contributors: Mete Fatih Cırıt, Taekjin LEE
+
 0.52.0 (2026-06-30)
 -------------------
 
